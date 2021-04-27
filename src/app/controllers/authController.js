@@ -4,14 +4,13 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const mailer = require('../../modules/mailer');
 
-const authConfig = require('../../config/auth');
 
 const User = require('../models/user');
 
 const router = express.Router();
 
 function generateToken(params = {}) {
-  return jwt.sign(params, authConfig.secret, {
+  return jwt.sign(params, process.env.AWS_SECRET_ACCESS_KEY , {
     expiresIn: 86400,
   });
 }

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-const authConfig = require('../config/auth.json');
 
-mongoose.connect(authConfig.database
+mongoose.connect( process.env.MONGO_URL
   , { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
